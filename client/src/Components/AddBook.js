@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import queries from "../queries/queries";
-const {getAuthorsQuery, addBookMutation} = queries
+const { getAuthorsQuery, addBookMutation,getBooksQuery } = queries;
 const getOptions = (loading, error, data) => {
   if (loading) {
     return <option disabled>Loading Authors...</option>;
@@ -21,7 +21,7 @@ const getOptions = (loading, error, data) => {
 
 const AddBook = () => {
   const [state, setState] = useState({ name: "", genre: "", authorId: "" });
-
+  const [addBook] = useMutation(addBookMutation);
   const { loading, error, data } = useQuery(getAuthorsQuery);
 
   const options = useMemo(() => getOptions(loading, error, data), [
@@ -30,27 +30,41 @@ const AddBook = () => {
     data
   ]);
 
-  const submitForm = (e)=>{
-     e.preventDefault();
-     
-  }
+  const submitForm = e => {
+    e.preventDefault();
+    addBook({
+      variables: {
+        name: state.name,
+        genre: state.genre,
+        authorId: state.authorId,
+      },refetchQueries: [{query: getBooksQuery}]
+    });
+  };
 
   return (
     <div>
       <form id="add-book" onSubmit={submitForm}>
         <div className="field">
           <label>Book name:</label>
-          <input type="text" onChange={(e) => setState({...state, name: e.target.value})} />
+          <input
+            type="text"
+            onChange={e => setState({ ...state, name: e.target.value })}
+          />
         </div>
 
         <div className="field">
           <label>Genre:</label>
-          <input type="text" onChange={(e) => setState({...state, genre: e.target.value})}/>
+          <input
+            type="text"
+            onChange={e => setState({ ...state, genre: e.target.value })}
+          />
         </div>
 
         <div className="field">
           <label>Author:</label>
-          <select onChange={(e) => setState({...state, authorId: e.target.value})}>
+          <select
+            onChange={e => setState({ ...state, authorId: e.target.value })}
+          >
             <option>Select Author</option>
 
             {options}

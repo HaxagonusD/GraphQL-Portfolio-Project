@@ -1,7 +1,11 @@
 import React from "react";
+import BookDetails from "./BookDetails"
 import { useQuery } from "@apollo/react-hooks";
 import  queries from '../queries/queries'
 const {getBooksQuery} = queries;
+
+//components
+
 
 const BookList = () => {
   const { loading, error, data } = useQuery(getBooksQuery);

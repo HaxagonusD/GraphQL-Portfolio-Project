@@ -24,6 +24,23 @@ const queries = {
     }
   }
   
-  `
+  `, getBookQuery: gql`
+    {
+      book($id:String!){
+        name 
+        genre
+        id
+        author{
+          id 
+          name
+          age
+          books{
+            name
+            id
+          }
+        }
+      }
+    }
+  `,
 }
  export default queries;
