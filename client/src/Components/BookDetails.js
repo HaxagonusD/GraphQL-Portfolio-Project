@@ -1,14 +1,13 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import  queries from '../queries/queries'
-const {getBookQuery} = queries;
+import queries from "../queries/queries";
+const { getBookQuery } = queries;
 
-const BookDetails = () => {
-
+const BookDetails = ({ which }) => {
 
   return (
-    <div id="book-details">
-      <p>output Book details here</p>
+    <div id="boook-details">
+      <p>{which}</p>
     </div>
   );
 };

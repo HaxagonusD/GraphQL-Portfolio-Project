@@ -25,8 +25,10 @@ const queries = {
         id
       }
     }
-  `, getBookQuery: gql`
-  query($id: ID){
+  `//$name of argument, type of argument <--- this is a declaration
+      //name of argument, reference to argument  <----- this is passing arguments to a function
+  , getBookQuery: gql`
+  query($id: ID){ 
     book(id: $id){
       name
       genre
