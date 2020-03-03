@@ -14,7 +14,7 @@ const client = new ApolloClient({
 });
 
 const App = () => {
-  const { which, setWhich } = useState(0);
+  const [ which, setWhich ] = useState("");
   console.log(which);
   return (
     <ApolloProvider client={client}>

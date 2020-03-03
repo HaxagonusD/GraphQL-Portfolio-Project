@@ -8,7 +8,7 @@ const { getBooksQuery } = queries;
 const BookList = ({ setWhich }) => {
   // click Hnadler
   const clickHandler = event => {
-    // setWhich(event.target.id);
+    setWhich(event.target.id);
   };
   //
   const { loading, error, data } = useQuery(getBooksQuery);
