@@ -19,7 +19,7 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <h1>Reading List</h1>
+        <h1 id="app-title">Reading List</h1>
 
         <BookList setWhich={setWhich} />
         <BookDetails which={which} />

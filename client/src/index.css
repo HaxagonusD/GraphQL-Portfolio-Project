@@ -13,7 +13,12 @@ code {
     monospace;
 }
 
-.App h1 {
+/* .App h1 {
+  color: #444;
+  text-align: center;
+} */
+
+#app-title{
   color: #444;
   text-align: center;
 }
@@ -77,4 +82,18 @@ form button {
   position: absolute;
   bottom: 10px;
   left: 10px;
+}
+
+.book-details{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40%;
+  background-color: #ad1457;
+  color: white;
+  margin: 0;
+  padding: 30px;
+  box-shadow: -2px -3px 5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
